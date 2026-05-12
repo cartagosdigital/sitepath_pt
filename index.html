@@ -34,6 +34,17 @@
       --nav-h:        70px;
       --radius:       12px;
       --radius-lg:    18px;
+
+      /* Light section palette */
+      --light-bg:         #F5F1EA;
+      --light-bg-soft:    #FAF7F0;
+      --light-text:       #14171F;
+      --light-muted:      #5A6378;
+      --light-dim:        #8A93A6;
+      --light-border:     rgba(20, 23, 31, 0.08);
+      --light-border-md:  rgba(20, 23, 31, 0.16);
+      --light-card:       #FFFFFF;
+      --light-card-hover: #FBFAF6;
     }
 
     /* =============================================
@@ -364,13 +375,17 @@
     }
 
     .hero-h1 {
-      font-size: clamp(36px, 6.5vw, 74px);
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      line-height: 1.08;
-      margin-bottom: 26px;
+      font-size: clamp(34px, 5.4vw, 60px);
+      font-weight: 600;
+      letter-spacing: -0.022em;
+      line-height: 1.14;
+      margin-bottom: 24px;
+      text-wrap: balance;
     }
-    .hero-h1 .accent { color: var(--green); }
+    .hero-h1 .accent {
+      color: var(--green);
+      font-weight: 700;
+    }
 
     .hero-sub {
       font-size: clamp(16px, 2vw, 19px);
@@ -1049,6 +1064,95 @@
     .wa-float svg { width: 26px; height: 26px; fill: #0A0C10; }
 
     /* =============================================
+       LIGHT SECTIONS (alternating rhythm)
+       ============================================= */
+    section.light {
+      background: var(--light-bg);
+      color: var(--light-text);
+    }
+    section.light .section-title { color: var(--light-text); }
+    section.light .section-sub   { color: var(--light-muted); }
+
+    /* Service cards on light */
+    section.light .svc-card {
+      background: var(--light-card);
+      border-color: var(--light-border);
+    }
+    section.light .svc-card:hover {
+      background: var(--light-card-hover);
+      border-color: var(--light-border-md);
+      box-shadow: 0 22px 44px rgba(20, 23, 31, 0.06);
+    }
+    section.light .svc-card.featured {
+      background: var(--light-card);
+      border-color: var(--green-border);
+      box-shadow: 0 0 0 1px var(--green-border), 0 18px 36px rgba(45, 199, 109, 0.10);
+    }
+    section.light .svc-name      { color: var(--light-text); }
+    section.light .svc-desc      { color: var(--light-muted); }
+    section.light .svc-list li   { color: var(--light-muted); }
+    section.light .tag {
+      background: rgba(27, 42, 74, 0.04);
+      border-color: var(--light-border);
+      color: var(--light-muted);
+    }
+    section.light .svc-footer {
+      background: var(--light-card);
+      border-color: var(--light-border);
+    }
+    section.light .svc-footer p      { color: var(--light-muted); }
+    section.light .svc-footer strong { color: var(--light-text); }
+
+    /* Process on light */
+    section.light .proc-num {
+      background: var(--light-bg);
+      box-shadow: 0 0 0 10px var(--light-bg), 0 4px 16px rgba(45, 199, 109, 0.18);
+    }
+    section.light .proc-title { color: var(--light-text); }
+    section.light .proc-desc  { color: var(--light-muted); }
+
+    /* Testimonials on light */
+    section.light .testi-card {
+      background: var(--light-card);
+      border-color: var(--light-border);
+    }
+    section.light .testi-card:hover {
+      background: var(--light-card-hover);
+      border-color: var(--light-border-md);
+      box-shadow: 0 12px 32px rgba(20, 23, 31, 0.06);
+    }
+    section.light .testi-text  { color: var(--light-muted); }
+    section.light .author-name { color: var(--light-text); }
+    section.light .author-av {
+      background: rgba(27, 42, 74, 0.06);
+      border-color: var(--green-border);
+    }
+    section.light .stats-bar {
+      background: var(--light-border);
+      border-color: var(--light-border);
+    }
+    section.light .stat-item  { background: var(--light-card); }
+    section.light .stat-num   { color: var(--light-text); }
+    section.light .stat-label { color: var(--light-muted); }
+
+    /* FAQ on light */
+    section.light .faq-item {
+      background: var(--light-card);
+      border-color: var(--light-border);
+    }
+    section.light .faq-item.open { border-color: var(--green-border); }
+    section.light .faq-q         { color: var(--light-text); }
+    section.light .faq-body-inner{ color: var(--light-muted); }
+
+    /* Override dark gradients for light variants */
+    section.light#services,
+    section.light#process,
+    section.light#testimonials,
+    section.light#faq {
+      background: var(--light-bg);
+    }
+
+    /* =============================================
        RESPONSIVE
        ============================================= */
     @media (max-width: 1024px) {
@@ -1157,9 +1261,7 @@
         </div>
 
         <h1 class="hero-h1 reveal delay-1">
-          Crie o seu site com<br>
-          <span class="accent">tudo incluído</span>,<br>
-          sem surpresas.
+          Crie o seu site com <span class="accent">tudo incluído</span>, sem surpresas.
         </h1>
 
         <p class="hero-sub reveal delay-2">
@@ -1193,7 +1295,7 @@
   <!-- =========================================
        SERVICES
        ========================================= -->
-  <section id="services">
+  <section id="services" class="light">
     <div class="container">
       <div class="sec-head reveal">
         <span class="section-label">O que fazemos</span>
@@ -1297,7 +1399,7 @@
   <!-- =========================================
        PROCESS
        ========================================= -->
-  <section id="process">
+  <section id="process" class="light">
     <div class="container">
       <div class="sec-head sec-head-center reveal">
         <span class="section-label">Como funciona</span>
@@ -1432,7 +1534,7 @@
   <!-- =========================================
        TESTIMONIALS
        ========================================= -->
-  <section id="testimonials">
+  <section id="testimonials" class="light">
     <div class="container">
       <div class="sec-head reveal">
         <span class="section-label">Testemunhos</span>
@@ -1513,7 +1615,7 @@
   <!-- =========================================
        FAQ
        ========================================= -->
-  <section id="faq">
+  <section id="faq" class="light">
     <div class="container">
       <div class="sec-head sec-head-center reveal">
         <span class="section-label">Perguntas frequentes</span>
